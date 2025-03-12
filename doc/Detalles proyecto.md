@@ -1,4 +1,5 @@
-﻿# Proyecto de Automatización para la Identificación de Sitios de Unión de Factores de Transcripción en E. coli en experimentos de ChIP-Seq
+
+ # Proyecto de Automatización para la Identificación de Sitios de Unión de Factores de Transcripción en E. coli en experimentos de ChIP-Seq
 
 Fecha: [dd/mm/yyyy]
 
@@ -9,14 +10,14 @@ Participantes:
 ## Descripción del Problema
 <!-- Puedes empezar con una introducción, luego la justificación y plantear el problema. -->
 
-El proyecto busca automatizar la extracción y el análisis de secuencias genómicas donde los factores de transcripción se unen en _Escherichia coli_. Se cuenta con un archivo que contiene información sobre los picos de unión, y con otro archivo que posee la secuencia completa del genoma. El objetivo es generar archivos FASTA específicos para cada factor de transcripción (TF), agrupando las secuencias de los picos de unión correspondientes. Posteriormente, estas secuencias serán analizadas mediante el software `meme` para identificar motivos, para eso se tiene que generar un script shell con todas las instrucciones `meme` usando las secuencias fasta de los picos de cada TF.
+<text> <p align="justify">El proyecto busca automatizar la extracción y el análisis de secuencias genómicas donde los factores de transcripción se unen en _Escherichia coli_. Se cuenta con un archivo que contiene información sobre los picos de unión, y con otro archivo que posee la secuencia completa del genoma. El objetivo es generar archivos FASTA específicos para cada factor de transcripción (TF), agrupando las secuencias de los picos de unión correspondientes. Posteriormente, estas secuencias serán analizadas mediante el software `meme` para identificar motivos, para eso se tiene que generar un script shell con todas las instrucciones `meme` usando las secuencias fasta de los picos de cada TF.</p></text> 
 
 ## Especificación de Requisitos
 
 
 ### Requisitos Funcionales:
 
-#### A. Extracción de Secuencias FASTA:
+#### A. ***Extracción de Secuencias FASTA:***
     
 1.  **Entrada de Datos:**
     
@@ -35,7 +36,7 @@ El proyecto busca automatizar la extracción y el análisis de secuencias genóm
     
 
 
-#### B. *Automatización del Análisis de Motivos:**
+#### B. ***Automatización del Análisis de Motivos:***
     
      
 1.  **Entrada de Directorio:**
@@ -53,7 +54,7 @@ El proyecto busca automatizar la extracción y el análisis de secuencias genóm
     
 
 ### **Requisitos No Funcionales:**
-
+<!-- Estos requisitos son generales por lo que no se dividen en seccion A y B como los requisitos funcionales. -->
 -   **Portabilidad y Usabilidad:**
     
     -   Compatible con sistemas Unix/Linux.
@@ -69,52 +70,57 @@ El proyecto busca automatizar la extracción y el análisis de secuencias genóm
 
 
 
-### C. Descripción de Datos de Entrada y Salida 
+### Descripción de Datos de Entrada y Salida 
 
-#### Formato del Archivo de Picos
+#### **A. Datos de Entrada** 
 
-Este archivo contiene información crucial sobre las regiones de unión de los 144 factores de transcripción (TFs) en _Escherichia coli_. Los datos están organizados en columnas que permiten identificar detalles específicos sobre la unión de los TFs a lo largo del genoma. El formato del archivo y la descripción de cada columna se detallan a continuación:
+1. ***Formato del Archivo de Picos***
 
--   **Dataset_Ids:**
+    <text> <p align="justify">Este archivo contiene información crucial sobre las regiones de unión de los 144 factores de transcripción (TFs) en _Escherichia coli_. Los datos están organizados en columnas que permiten identificar detalles específicos sobre la unión de los TFs a lo largo del genoma. El formato del archivo y la descripción de cada columna se detallan a continuación:</p></text> 
     
-    -   _Descripción:_ Identificadores únicos para cada conjunto de datos. Estas IDs indican diferentes experimentos o condiciones bajo las cuales se determinaron los sitios de unión para los TFs.
-    -   _Ejemplo:_ "DS001","DS002", etc.
--   **TF_name:**
-    
-    -   _Descripción:_ El nombre del factor de transcripción que se une al genoma en la región especificada.
-    -   _Ejemplo:_ "AraC", "LacI", etc.
--   **Peak_start:**
-    
-    -   _Descripción:_ La posición inicial en el genoma donde comienza el pico de unión. Se refiere a la ubicación del primer nucleótido del pico.
-    -   _Ejemplo:_ 345676, 123456, etc.
--   **Peak_end:**
-    
-    -   _Descripción:_ La posición final en el genoma donde termina el pico de unión. Se refiere a la ubicación del último nucleótido del pico.
-    -   _Ejemplo:_ 345786, 123556, etc.
--   **Peak_center:**
-    
-    -   _Descripción:_ Posición central del pico de unión, calculada como el promedio o posición entre el `Peak_start` y `Peak_end`.
-    -   _Ejemplo:_ 345731, 123501, etc.
--   **Peak_number:**
-    
-    -   _Descripción:_ Número secuencial utilizado para identificar picos dentro de un conjunto de datos. Esto es útil para referencias internas.
-    -   _Ejemplo:_ 1, 2, 3, etc.
--   **Max_Fold_Enrichment:**
-    
-    -   _Descripción:_ Valor que representa el máximo enriquecimiento observado en el sitio de unión del pico.
-    -   _Ejemplo:_ 15.4, 22.3, etc.
--   **Max_Norm_Fold_Enrichment:**
-    
-    -   _Descripción:_ Valor de máximo enriquecimiento normalizado, ajustado por un factor de control para comparaciones equitativas entre experimentos.
-    -   _Ejemplo:_ 12.0, 20.1, etc.
--   **Proximal_genes:**
-    
-    -   _Descripción:_ Lista de genes cercanos al pico de unión, proporcionando contexto para el análisis funcional.
-    -   _Ejemplo:_ "geneA, geneB", "geneX, geneY", etc.
--   **Center_position_type:**
-    
-    -   _Descripción:_ Denota la ubicación genómica del pico central, como intergénica, intrónica, etc.
-    -   _Ejemplo:_ "intergénica", "intrónica", etc.
+    -   **Dataset_Ids:**
+        
+        -   _Descripción:_ Identificadores únicos para cada conjunto de datos. Estas IDs indican diferentes experimentos o condiciones bajo las cuales se determinaron los sitios de unión para los TFs.
+        -   _Ejemplo:_ "DS001","DS002", etc.
+    -   **TF_name:**
+        
+        -   _Descripción:_ El nombre del factor de transcripción que se une al genoma en la región especificada.
+        -   _Ejemplo:_ "AraC", "LacI", etc.
+    -   **Peak_start:**
+        
+        -   _Descripción:_ La posición inicial en el genoma donde comienza el pico de unión. Se refiere a la ubicación del primer nucleótido del pico.
+        -   _Ejemplo:_ 345676, 123456, etc.
+    -   **Peak_end:**
+        
+        -   _Descripción:_ La posición final en el genoma donde termina el pico de unión. Se refiere a la ubicación del último nucleótido del pico.
+        -   _Ejemplo:_ 345786, 123556, etc.
+    -   **Peak_center:**
+        
+        -   _Descripción:_ Posición central del pico de unión, calculada como el promedio o posición entre el `Peak_start` y `Peak_end`.
+        -   _Ejemplo:_ 345731, 123501, etc.
+    -   **Peak_number:**
+        
+        -   _Descripción:_ Número secuencial utilizado para identificar picos dentro de un conjunto de datos. Esto es útil para referencias internas.
+        -   _Ejemplo:_ 1, 2, 3, etc.
+    -   **Max_Fold_Enrichment:**
+        
+        -   _Descripción:_ Valor que representa el máximo enriquecimiento observado en el sitio de unión del pico.
+        -   _Ejemplo:_ 15.4, 22.3, etc.
+    -   **Max_Norm_Fold_Enrichment:**
+        
+        -   _Descripción:_ Valor de máximo enriquecimiento normalizado, ajustado por un factor de control para comparaciones equitativas entre experimentos.
+        -   _Ejemplo:_ 12.0, 20.1, etc.
+    -   **Proximal_genes:**
+        
+        -   _Descripción:_ Lista de genes cercanos al pico de unión, proporcionando contexto para el análisis funcional.
+        -   _Ejemplo:_ "geneA, geneB", "geneX, geneY", etc.
+    -   **Center_position_type:**
+        
+        -   _Descripción:_ Denota la ubicación genómica del pico central, como intergénica, intrónica, etc.
+        -   _Ejemplo:_ "intergénica", "intrónica", etc.
+
+#### **B. Datos de Salida**
+<!-- Se ira rellenando conforme se obtengan bien los parametros de los datos de salida con el desarrollo del proyecto . -->
 
 
 ## Análisis y Diseño
