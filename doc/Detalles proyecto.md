@@ -154,7 +154,7 @@ Participantes:
 
 ```
 1. Inicio
-2. Leer archivo de picos
+2. Leer archivo de picos y generar directorio de salida 
 3. Para cada registro:
    a. Obtener TF_name, Peak_start, Peak_end
    b. Extraer secuencia del genoma usando Peak_start y Peak_end
@@ -176,12 +176,14 @@ Participantes:
     - Directorio con archivos fasta.
     
 2.  **Generación de Comandos:**
-    
-    -   Iterar sobre cada archivo `.fa` en el directorio.
-    -   Generar una línea de comando para ejecutar `meme` usando cada archivo FASTA.
+
+    -   Generar una línea de comando para ejecutar `meme` usando cada archivo FASTA
+    -   Iterar sobre cada archivo `.fa` en el directorio
     -   Incluir opciones necesarias (por ejemplo, `-oc <output_directory>`, `-mod oops`, etc.) y asegurar nombrar el directorio de salida para cada ejecución de `meme`.
-3.  **Salida del Script:**
-    - salida a pantalla
+
+4.  **Salida del Script:**
+   
+    - Salida del comando un script redireccionado a un archivo "sun_meme.sh"
     
 
 **Algoritmo:**
