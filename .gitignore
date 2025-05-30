@@ -1,1 +1,4 @@
-*..vscode
+#Carpeta del cache de visual studio 
+.vscode
+#carpeta del cache de python
+src/__pycache__
