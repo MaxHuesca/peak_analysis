@@ -16,11 +16,14 @@ def charge_tsv (path):
         -dic  (dicionario): diccionario con todos los tfs y sus sitios de union 
     '''
     #Creamos un data frame con pandas del archivo tsv
-    peaks_pd=pd.read_csv(
-    path,
-    sep="\t",
-    header=0, 
-    )
+    try:
+        peaks_pd=pd.read_csv(
+        path,
+        sep="\t",
+        header=0, 
+        ) 
+    except Exception: 
+        raise ValueError("El archivo proporcionado no cuenta con un formato adecuado asegurese que sea tabular")
     #Solo obtenemos los nombres de los peaks y las posiciones de union
     peaks_df=peaks_pd[["TF_name","Peak_start","Peak_end"]]
     #Lo convertimos en un diccionario 

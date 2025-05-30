@@ -10,21 +10,30 @@ Imports:
 """
 
 import os
+import argparse 
 from read_genome import charge_genome
 from read_tsv import charge_tsv
 from writes_fastas import write_out
 
 
 def main():
-        
+    #parseador: 
+    #Creamos el objeto parseador 
+    parser= argparse.ArgumentParser(description="Parser para guardar los argumentos")
+    #Creamos todos lo argumentos necesarios para el programa
+    parser.add_argument("--tsv", default="E_coli_K12_MG1655_U00096.3.txt", hepl="Especifica el nombre del archivo tsv")
+    parser.add_argument("--fasta", default="union_peaks_file.tsv", hepl="Especifica el nombre del archivo fasta")
+    #obtenemos los argumentos en una variable 
+    args= parser.parse_args()
+    
     #carga de los archivos, ruta proporcionada por el usuario 
-    path=input("Ingrese el nombre de su archivo tsv en su carpeta data:")
+    path=args.tsv
     input_tsv=os.path.join("data", path)
     #Nos aseguramos que el archivo exista
     if not os.path.exists(input_tsv):
         print(f"Error: el archivo {input_tsv} no existe.")
         exit(1)
-    path=input("Ingrese el nombre de su archivo fasta en su carpeta data:")
+    path=args.fasta
     input_genome=os.path.join("data", path)
     #Nos aseguramos que el archivo exista
     if not os.path.exists(input_genome):

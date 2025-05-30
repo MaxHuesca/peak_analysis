@@ -34,6 +34,10 @@ def write_out (tfs, genome):
                     #extraemos cada posicion de inicio y fin 
                     inicio=int(union_site[0])
                     fin=int(union_site[1])
+                    if inicio > fin:
+                        pos_temp=inicio
+                        inicio=fin
+                        fin=pos_temp
                     #comprobamos que las posiciones a escribir sean correctas 
                     if not inicio or not fin or fin>len(genome):
                         print("error una de las posiciones no existen o esta fuera del rango, fue ignorada")
