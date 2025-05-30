@@ -1,5 +1,7 @@
 <h1 align="center">Proyecto de automatizacion de extractor de secuencias de transcription factors factors en E. coli</h1>
 
+> De Los Santos Huesca Ismael Maximiliano
+
 ## Contenidos: 
 1. Resumen
 2. Datos disponibles
