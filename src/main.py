@@ -37,16 +37,16 @@ def main():
     
     #carga de los archivos, ruta proporcionada por el usuario 
     path=args.tsv
-    input_tsv=os.path.join("../data", path)
+    input_tsv=os.path.join("data", path)
     #Nos aseguramos que el archivo exista
     if not os.path.exists(input_tsv):
-        print(f"Error: el archivo {input_tsv} no existe.")
+        print(f"Error: el archivo {input_tsv} no existe o podria no estar en la estructura estandar del proyecto.")
         exit(1)
     path=args.fasta
-    input_genome=os.path.join("../data", path)
+    input_genome=os.path.join("data", path)
     #Nos aseguramos que el archivo exista
     if not os.path.exists(input_genome):
-        print(f"Error: el archivo {input_genome} no existe.")
+        print(f"Error: el archivo {input_genome} no existe o podria no estar en la estructura estandar del proyecto.")
         exit(1)
         
     #Ahora las dos listas genome y peaks tienen la informacion que queremos 

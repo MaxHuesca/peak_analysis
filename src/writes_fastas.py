@@ -15,7 +15,7 @@ def write_out (tfs, genome):
         -tfs (Dic): Diccionario con todos los tfs de un archivo tsv
         -genome (list): lista con todas las bases nitrogenadas de un genoma especifico 
     '''
-    direc= os.path.join("../output")
+    direc= os.path.join("output")
     if not os.path.exists(direc):
         os.mkdir(direc)
         print("La carpeta output no existia, se creo una")
